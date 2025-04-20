@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   url_launcher: ^6.3.1
   font_awesome_flutter: ^10.8.0
+  google_fonts: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,7 @@ fonts:
       - asset: fonts/Poppins-Regular.ttf
       - asset: fonts/Poppins-Bold.ttf
         weight: 700
+    
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

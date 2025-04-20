@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:personalportfolio/screens/Aboutme.dart';
 import 'package:personalportfolio/screens/contactscreen.dart';
 import 'package:personalportfolio/screens/projectscreen.dart';
@@ -38,7 +39,9 @@ class _HomepageState extends State<Homepage> {
 
   Future<void> _launcherUrl(String url) async {
     final Uri uri = Uri.parse(url);
-    if (await launchUrl(uri, mode: LaunchMode.externalApplication)) ;
+    if (await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      // Successfully launched the URL
+    }
   }
 
   @override
@@ -52,7 +55,11 @@ class _HomepageState extends State<Homepage> {
             begin: Alignment.topLeft,
             end: Alignment.bottomCenter,
 
-            colors: [BackgroundColor, PrimaryColor, BackgroundColor],
+            colors: [
+              // Color(0xFF0F2027), // Dark blue shade
+              // Color(0xFF203A43), // Slightly lighter
+              BackgroundColor, PrimaryColor, BackgroundColor,
+            ],
           ),
         ),
         child: SingleChildScrollView(
@@ -62,8 +69,8 @@ class _HomepageState extends State<Homepage> {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: isMobile ? 20 : 100,
-                  vertical: isMobile ? 20 : 80,
+                  horizontal: isMobile ? 20 : 30,
+                  vertical: isMobile ? 20 : 30,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -87,7 +94,7 @@ class _HomepageState extends State<Homepage> {
                     vertical: isMobile ? 20 : 150,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 250, top: 150),
+                    padding: const EdgeInsets.only(left: 250, top: 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -106,9 +113,8 @@ class _HomepageState extends State<Homepage> {
                             SizedBox(height: 10),
                             Text(
                               "Flutter Developer",
-                              style: TextStyle(
-                                fontFamily: "sora",
-                                fontSize: 50,
+                              style: GoogleFonts.spaceGrotesk(
+                                fontSize: 48,
                                 letterSpacing: -1,
                                 fontWeight: FontWeight.bold,
                                 foreground:
@@ -132,12 +138,9 @@ class _HomepageState extends State<Homepage> {
                             SizedBox(height: 10),
                             Text(
                               "Flutter developer passionate about building sleek, responsive,\n and user-friendly mobile apps. Let’s bring your ideas to life!",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: "Inter",
-                                height: 1.5,
-                                color: Color(0xFFCFCFCF),
-                                fontWeight: FontWeight.w900,
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                color: Colors.white70,
                               ),
                             ),
 
@@ -150,7 +153,9 @@ class _HomepageState extends State<Homepage> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.transparent,
                                     shape: RoundedRectangleBorder(
-                                      side: BorderSide(color: neonPurple),
+                                      side: BorderSide(
+                                        color: Color(0xFF9A4DFF),
+                                      ),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
@@ -252,15 +257,54 @@ class _HomepageState extends State<Homepage> {
   }
 
   Widget _buildNavButton(String title, GlobalKey key) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: TextButton(
-        onPressed: () => scrollToSection(key),
-        child: Text(
-          title,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
-        ),
-      ),
+    bool _ishovered = false;
+    return StatefulBuilder(
+      builder: (context, setState) {
+        return MouseRegion(
+          onEnter: (event) {
+            setState(() {
+              _ishovered = true;
+            });
+          },
+
+          onExit: (event) {
+            setState(() {
+              _ishovered = false;
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child:
+                title == "Contact" && _ishovered
+                    ? OutlinedButton(
+                      onPressed: () => scrollToSection(key),
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(color: Color(0xFF9A4DFF)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          color: Color(0xFF9A4DFF),
+                          fontSize: 16,
+                        ),
+                      ),
+                    )
+                    : TextButton(
+                      onPressed: () => scrollToSection(key),
+                      child: Text(
+                        title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+          ),
+        );
+      },
     );
   }
 }
