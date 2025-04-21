@@ -167,7 +167,7 @@ class _HomepageState extends State<Homepage> {
                                 ),
                               ),
                             ),
-                            SizedBox(width: isMobile ? 5 : 10),
+                            SizedBox(width: isMobile ? 5 : 11),
                             Container(
                               height: 35,
                               decoration: BoxDecoration(
