@@ -15,7 +15,6 @@ class _AboutmeState extends State<Aboutme> {
   Widget build(BuildContext context) {
     final ismobile = Responsive.ismobile(context);
     return Container(
-  
       height: MediaQuery.of(context).size.height,
       width: double.infinity,
       decoration: BoxDecoration(color: BackgroundColor),
