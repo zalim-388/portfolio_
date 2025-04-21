@@ -9,11 +9,9 @@ class ContactScreen extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: double.infinity,
-    decoration: BoxDecoration( gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomCenter,
-
-          colors: [BackgroundColor,PrimaryColor, BackgroundColor],)),
+    decoration: BoxDecoration( 
+      color: BackgroundColor
+        ),
       child: Center(
         child: Text(
           "Contact Section",
