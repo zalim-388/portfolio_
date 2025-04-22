@@ -22,7 +22,7 @@ class _HomepageState extends State<Homepage> {
   final aboutKey = GlobalKey();
   final projectKey = GlobalKey();
   final contactKey = GlobalKey();
-
+  bool isHovered = false;
   @override
   void dispose() {
     scrollController.dispose();
@@ -53,74 +53,53 @@ class _HomepageState extends State<Homepage> {
           // 🔹 Fixed Vertical Divider
           Positioned(
             left: 60,
-            top: 200,
+            bottom: 0,
             child: Column(
               children: [
+                _socialIcon(
+                  FontAwesomeIcons.github,
+                  "https://github.com/zalim-388",
+                ),
+                SizedBox(height: 20),
+                _socialIcon(
+                  FontAwesomeIcons.linkedin,
+                  "https://www.linkedin.com/in/salim-a31335351/",
+                ),
+                SizedBox(height: 20),
+                _socialIcon(
+                  FontAwesomeIcons.instagram,
+                  "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
+                ),
+                SizedBox(height: 20),
+                _socialIcon(FontAwesomeIcons.x, ""),
+                SizedBox(height: 20),
+
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   width: 1,
                   color: Colors.white.withOpacity(0.1),
                 ),
               ],
             ),
           ),
-          Positioned(
-            right: 20,
-            bottom: 100,
-            child: Column(
-              children: [
-                Transform.rotate(
-                  angle: -90 * 3.1416 / 180,
-                  child: GestureDetector(
-                    onTap: () {
-                      final Uri emaillaunchuri = Uri(
-                        scheme: "mailto",
-                        path: 'zaalim388@gmail.com',
-                        query: Uri.decodeFull(
-                          'subject=contact from portfolio&body=hello salim',
-                        ),
-                      );
-                      launchUrl(emaillaunchuri);
-                    },
 
-                    child: Text(
-                      "zaalim388@gmail.com",
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.5),
-                        fontSize: 12,
-                        letterSpacing: 1.2,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  height: 80,
-                  // height: MediaQuery.of(context).size.height * 0.4,
-                  width: 1,
-                  color: Colors.white.withOpacity(0.3),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: 30,
-            left: 0,
-            right: 0,
-            bottom: 10,
-            child: Center(
-              child: Text(
-                "Flutter developer",
-                style: TextStyle(
-                  fontSize: isMobile ? 70 : 140,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white.withOpacity(0.03),
-                  letterSpacing: -10,
-                ),
-              ),
-            ),
-          ),
-
+          // Positioned(
+          //   top: 30,
+          //   left: 0,
+          //   right: 0,
+          //   bottom: 10,
+          //   child: Center(
+          //     child: Text(
+          //       "Flutter developer",
+          //       style: TextStyle(
+          //         fontSize: isMobile ? 70 : 140,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.white.withOpacity(0.02),
+          //         letterSpacing: -10,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Positioned.fill(
             child: SingleChildScrollView(
               controller: scrollController,
@@ -134,7 +113,26 @@ class _HomepageState extends State<Homepage> {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
+
                       children: [
+                        Container(
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: secondarycolor),
+                            shape: BoxShape.circle
+                          ),
+                          
+                          child: Text(
+                            " S",
+                            style: TextStyle(
+                              color: secondarycolor,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        
+
                         _buildNavButton("Home", homeKey),
                         SizedBox(width: isMobile ? 10 : 15),
                         _buildNavButton("About", aboutKey),
@@ -154,7 +152,7 @@ class _HomepageState extends State<Homepage> {
                       vertical: isMobile ? 30 : 150,
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 60),
+                      padding: const EdgeInsets.only(left: 160),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -166,7 +164,7 @@ class _HomepageState extends State<Homepage> {
                                   "Hi, I'm Salim 👋",
                                   style: TextStyle(
                                     fontSize: 22,
-                                    color: secondarycolor,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -206,29 +204,12 @@ class _HomepageState extends State<Homepage> {
                                             color: secondarycolor,
                                           ),
                                           borderRadius: BorderRadius.circular(
-                                            2,
+                                            8,
                                           ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
-                                    _socialIcon(
-                                      FontAwesomeIcons.github,
-                                      "https://github.com/zalim-388",
-                                    ),
                                     SizedBox(width: 20),
-                                    _socialIcon(
-                                      FontAwesomeIcons.linkedin,
-                                      "https://www.linkedin.com/in/salim-a31335351/",
-                                    ),
-                                    SizedBox(width: 20),
-                                    _socialIcon(
-                                      FontAwesomeIcons.instagram,
-                                      "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-                                    ),
-                                    SizedBox(width: 20),
-                                    _socialIcon(FontAwesomeIcons.x, ""),
-                                    SizedBox(height: 40),
                                   ],
                                 ),
                               ],
@@ -239,11 +220,131 @@ class _HomepageState extends State<Homepage> {
                     ),
                   ),
 
-                  SizedBox(key: aboutKey, child: const Aboutme()),
-                  SizedBox(key: projectKey, child: const ProjectScreen()),
-                  SizedBox(key: contactKey, child: const ContactScreen()),
+                  Container(
+                    key: aboutKey,
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isMobile ? 30 : 150,
+                      vertical: isMobile ? 30 : 50,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(child: Aboutme()),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: VerticalDivider(
+                            thickness: 1,
+                            color: Colors.white.withOpacity(0.3),
+                            width: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Projects Section
+                  Container(
+                    key: projectKey,
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isMobile ? 30 : 150,
+                      vertical: isMobile ? 30 : 50,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(child: ProjectScreen()),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: VerticalDivider(
+                            thickness: 1,
+                            color: Colors.white.withOpacity(0.3),
+                            width: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    key: contactKey,
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isMobile ? 30 : 150,
+                      vertical: isMobile ? 30 : 50,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(child: ContactScreen()),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: VerticalDivider(
+                            thickness: 1,
+                            color: Colors.white.withOpacity(0.3),
+                            width: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
+            ),
+          ),
+
+          Positioned(
+            right: 40,
+            bottom: 0,
+            child: Column(
+              children: [
+                MouseRegion(
+                  onEnter: (_) => setState(() => isHovered = true),
+                  onExit: (_) => setState(() => isHovered = false),
+                  child:
+                      isHovered
+                          ? Transform.rotate(
+                            angle: 90 * 3.1416 / 180,
+                            child: GestureDetector(
+                              onTap: () {
+                                final Uri emaillaunchuri = Uri(
+                                  scheme: "mailto",
+                                  path: 'zaalim388@gmail.com',
+                                  query: Uri.encodeFull(
+                                    'subject=Contact from Portfolio&body=Hello Salim,',
+                                  ),
+                                );
+                                launchUrl(emaillaunchuri);
+                              },
+                              child: Text(
+                                "zaalim388@gmail.com",
+                                style: TextStyle(
+                                  color: secondarycolor.withOpacity(0.5),
+                                  fontSize: 16,
+                                  letterSpacing: 1.2,
+                                ),
+                              ),
+                            ),
+                          )
+                          : Transform.rotate(
+                            angle: 90 * 3.1416 / 180,
+                            child: Text(
+                              "zaalim388@gmail.com",
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(0.5),
+                                fontSize: 16,
+                                letterSpacing: 1.2,
+                              ),
+                            ),
+                          ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  width: 1,
+                  color: Colors.white.withOpacity(0.1),
+                ),
+              ],
             ),
           ),
         ],
@@ -301,101 +402,8 @@ class _HomepageState extends State<Homepage> {
 }
 
 Widget _socialIcon(IconData icon, String url) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 6),
-    child: Container(
-      height: 35,
-      width: 35,
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        border: Border.all(color: secondarycolor),
-      ),
-      child: IconButton(
-        onPressed: () => launchUrl(Uri.parse(url)),
-        icon: Icon(icon, size: 16, color: secondarycolor),
-      ),
-    ),
+  return IconButton(
+    onPressed: () => launchUrl(Uri.parse(url)),
+    icon: Icon(icon, size: 19, color: description),
   );
 }
-
-
-
-          // child: Stack(
-              //   children: [
-              //     Positioned(
-              //       top: 30,
-              //       left: 0,
-              //       right: 0,
-              //       bottom: 10,
-              //       child: Center(
-              //         child: Text(
-              //           "Flutter developer",
-              //           style: TextStyle(
-              //             fontSize: isMobile ? 100 : 200,
-              //             fontWeight: FontWeight.bold,
-              //             color: Colors.white.withOpacity(0.01),
-              //             letterSpacing: -10,
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-
-
-
-         // SizedBox(width: isMobile ? 5 : 10),
-                              // Container(
-                              //   height: 35,
-                              //   decoration: BoxDecoration(
-                              //     shape: BoxShape.circle,
-                              //     border: Border.all(color: secondarycolor),
-                              //   ),
-                              //   child: IconButton(
-                              //     onPressed:
-                              //         () => _launcherUrl(
-                              //           "https://github.com/zalim-388",
-                              //         ),
-                              //     icon: Icon(
-                              //       FontAwesomeIcons.github,
-                              //       color: secondarycolor,
-                              //       size: 16,
-                              //     ),
-                              //   ),
-                              // ),
-                              // SizedBox(width: isMobile ? 5 : 10),
-                              // Container(
-                              //   height: 35,
-                              //   decoration: BoxDecoration(
-                              //     shape: BoxShape.circle,
-                              //     border: Border.all(color: secondarycolor),
-                              //   ),
-                              //   child: IconButton(
-                              //     onPressed:
-                              //         () => _launcherUrl(
-                              //           "https://www.linkedin.com/in/salim-a31335351/",
-                              //         ),
-                              //     icon: Icon(
-                              //       FontAwesomeIcons.linkedin,
-                              //       color: secondarycolor,
-                              //       size: 16,
-                              //     ),
-                              //   ),
-                              // ),
-                              // SizedBox(width: isMobile ? 5 : 11),
-                              // Container(
-                              //   height: 35,
-                              //   decoration: BoxDecoration(
-                              //     shape: BoxShape.circle,
-                              //     border: Border.all(color: secondarycolor),
-                              //   ),
-                              //   child: IconButton(
-                              //     onPressed:
-                              //         () => _launcherUrl(
-                              //           "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-                              //         ),
-                              //     icon: Icon(
-                              //       FontAwesomeIcons.instagram,
-                              //       color: secondarycolor,
-                              //       size: 16,
-                              //     ),
-                              //   ),
-                              // ),
