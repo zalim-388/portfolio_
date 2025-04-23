@@ -15,6 +15,7 @@ class _AboutmeState extends State<Aboutme> {
   @override
   Widget build(BuildContext context) {
     final ismobile = Responsive.ismobile(context);
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(color: BackgroundColor),
@@ -22,7 +23,7 @@ class _AboutmeState extends State<Aboutme> {
         child: Padding(
           padding: const EdgeInsets.only(
             left: 240,
-            top: 350,
+            top: 00,
             right: 40,
             bottom: 60,
           ),
@@ -42,7 +43,7 @@ class _AboutmeState extends State<Aboutme> {
               Text(
                 "About Me",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: ismobile ? 20 : 26,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -53,7 +54,7 @@ class _AboutmeState extends State<Aboutme> {
                 "I specialize in designing intuitive \n UI and developing functional apps using Flutter.\n If you're looking for a dedicated developer\n to bring your ideas to life, let's connect!\n\n"
                 "Here are a few technologies I've been working with recently:",
                 style: GoogleFonts.inter(
-                  fontSize: 16,
+                  fontSize: ismobile ? 14 : 16,
                   fontWeight: FontWeight.normal,
                   color: Color(0xFFB0B0B0),
                   height: 1.6,
@@ -79,14 +80,14 @@ class _AboutmeState extends State<Aboutme> {
                 ],
               ),
               // Vertical Divider
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: VerticalDivider(
-                  thickness: 1,
-                  color: Colors.white.withOpacity(0.3),
-                  width: 20,
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 20),
+              //   child: VerticalDivider(
+              //     thickness: 1,
+              //     color: Colors.white.withOpacity(0.3),
+              //     width: 20,
+              //   ),
+              // ),
             ],
           ),
         ),

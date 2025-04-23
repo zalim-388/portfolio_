@@ -11,8 +11,8 @@ class ProjectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ismobile = Responsive.ismobile(context);
     return Container(
-      height: MediaQuery.of(context).size.height,
       width: double.infinity,
+
       decoration: BoxDecoration(color: BackgroundColor),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 140),
@@ -33,7 +33,7 @@ class ProjectScreen extends StatelessWidget {
               Text(
                 "Some Things I've build",
                 style: GoogleFonts.poppins(
-                  fontSize: 22,
+                  fontSize: ismobile ? 18 : 24,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -45,8 +45,8 @@ class ProjectScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 350,
-                    width: 500,
+                    height: ismobile ? 200 : 350,
+                    width: ismobile ? double.infinity : 500,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
@@ -179,7 +179,7 @@ class ProjectScreen extends StatelessWidget {
                           ),
                           alignment: Alignment.centerRight,
                           child: Text(
-                            "",
+                            "A real-time chat application built with Flutter and Firebase. Supports image messaging, chat clearing, and a responsive UI design using Firestore and Firebase Storage.",
                             style: GoogleFonts.manrope(
                               color: description,
                               fontSize: 16,
@@ -232,8 +232,8 @@ class ProjectScreen extends StatelessWidget {
                   SizedBox(width: 60),
 
                   Container(
-                    height: 350,
-                    width: 500,
+                    height: ismobile ? 200 : 350,
+                    width: ismobile ? double.infinity : 500,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
@@ -250,8 +250,8 @@ class ProjectScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 350,
-                    width: 500,
+                    height: ismobile ? 200 : 350,
+                    width: ismobile ? double.infinity : 500,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(

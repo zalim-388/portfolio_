@@ -39,7 +39,9 @@ class _HomepageState extends State<Homepage> {
 
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
-    if (await launchUrl(uri, mode: LaunchMode.externalApplication)) {}
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
   }
 
   @override
@@ -57,9 +59,16 @@ class _HomepageState extends State<Homepage> {
             child: Column(
               children: [
                 _socialIcon(
-                  FontAwesomeIcons.github,
-                  "https://github.com/zalim-388",
+                  FontAwesomeIcons.linkedin,
+                  "https://www.linkedin.com/in/salim-a31335351/",
                 ),
+                // IconButton(
+                //   onPressed:
+                //       () => _launchUrl(
+                //         Uri.parse("https://github.com/zalim-388") as String,
+                //       ),
+                //   icon: Icon(FontAwesomeIcons.github),
+                // ),
                 SizedBox(height: 20),
                 _socialIcon(
                   FontAwesomeIcons.linkedin,
@@ -71,9 +80,9 @@ class _HomepageState extends State<Homepage> {
                   "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
                 ),
                 SizedBox(height: 20),
+
                 _socialIcon(FontAwesomeIcons.x, ""),
                 SizedBox(height: 20),
-
                 Container(
                   height: MediaQuery.of(context).size.height * 0.2,
                   width: 1,
@@ -103,7 +112,7 @@ class _HomepageState extends State<Homepage> {
           Positioned.fill(
             child: SingleChildScrollView(
               controller: scrollController,
-              physics:  AlwaysScrollableScrollPhysics(),
+              physics: AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
                   Padding(
@@ -137,7 +146,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
 
-                        SizedBox(width: 1200),
+                        SizedBox(width: isMobile ? 300 : 600),
 
                         _buildNavButton("Home", homeKey),
                         SizedBox(width: isMobile ? 10 : 15),
@@ -196,25 +205,41 @@ class _HomepageState extends State<Homepage> {
                                 SizedBox(height: 20),
                                 Row(
                                   children: [
-                                    ElevatedButton.icon(
-                                      onPressed: () {},
-                                      label: Text(
+                                    Container(
+                                      height: 40,
+                                      width: 150,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: secondarycolor,
+                                        ),
+                                        borderRadius: BorderRadius.circular(1),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
                                         "Download CV",
                                         style: TextStyle(color: secondarycolor),
                                       ),
-
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent,
-                                        shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                            color: secondarycolor,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            8,
-                                          ),
-                                        ),
-                                      ),
                                     ),
+
+                                    // ElevatedButton.icon(
+                                    //   onPressed: () {},
+                                    //   label: Text(
+                                    //     "Download CV",
+                                    //     style: TextStyle(color: secondarycolor),
+                                    //   ),
+
+                                    //   style: ElevatedButton.styleFrom(
+                                    //     backgroundColor: Colors.transparent,
+                                    //     shape: RoundedRectangleBorder(
+                                    //       side: BorderSide(
+                                    //         color: secondarycolor,
+                                    //       ),
+                                    //       borderRadius: BorderRadius.circular(
+                                    //         8,
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // ),
                                     SizedBox(width: 20),
                                   ],
                                 ),
