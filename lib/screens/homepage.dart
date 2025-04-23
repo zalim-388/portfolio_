@@ -103,7 +103,7 @@ class _HomepageState extends State<Homepage> {
           Positioned.fill(
             child: SingleChildScrollView(
               controller: scrollController,
-              physics: const AlwaysScrollableScrollPhysics(),
+              physics:  AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
                   Padding(
@@ -112,26 +112,32 @@ class _HomepageState extends State<Homepage> {
                       vertical: isMobile ? 40 : 80,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: secondarycolor),
-                            shape: BoxShape.circle
-                          ),
-                          
-                          child: Text(
-                            " S",
-                            style: TextStyle(
-                              color: secondarycolor,
-                              fontSize: 12,
+                        Transform.rotate(
+                          angle: 70,
+                          child: Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: secondarycolor),
+                              shape: BoxShape.rectangle,
+                            ),
+                            alignment: Alignment.center,
+
+                            child: Transform.rotate(
+                              angle: 40,
+                              child: Text(
+                                "S",
+                                style: TextStyle(
+                                  color: secondarycolor,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                        
+
+                        SizedBox(width: 1200),
 
                         _buildNavButton("Home", homeKey),
                         SizedBox(width: isMobile ? 10 : 15),
@@ -163,8 +169,8 @@ class _HomepageState extends State<Homepage> {
                                 Text(
                                   "Hi, I'm Salim 👋",
                                   style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
+                                    fontSize: 18,
+                                    color: secondarycolor,
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -294,7 +300,7 @@ class _HomepageState extends State<Homepage> {
           ),
 
           Positioned(
-            right: 40,
+            right: 0,
             bottom: 0,
             child: Column(
               children: [
@@ -340,7 +346,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.2,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   width: 1,
                   color: Colors.white.withOpacity(0.1),
                 ),

@@ -9,9 +9,7 @@ class ContactScreen extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: double.infinity,
-    decoration: BoxDecoration( 
-      color: BackgroundColor
-        ),
+      decoration: BoxDecoration(color: BackgroundColor),
       child: Center(
         child: Text(
           "Contact Section",
@@ -23,6 +21,5 @@ class ContactScreen extends StatelessWidget {
         ),
       ),
     );
-    
   }
 }
