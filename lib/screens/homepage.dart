@@ -24,6 +24,7 @@ class _HomepageState extends State<Homepage> {
   final projectKey = GlobalKey();
   final contactKey = GlobalKey();
   bool isHovered = false;
+  int selectedindex = 0;
   @override
   void dispose() {
     scrollController.dispose();
@@ -45,13 +46,62 @@ class _HomepageState extends State<Homepage> {
     }
   }
 
+  void _onnavibarmobile(int index) {
+    setState(() {
+      selectedindex = index;
+    });
+
+    switch (index) {
+      case 0:
+        scrollToSection(homeKey);
+        break;
+      case 1:
+        scrollToSection(aboutKey);
+        break;
+      case 2:
+        scrollToSection(projectKey);
+        break;
+      case 3:
+        scrollToSection(contactKey);
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isMobile = Responsive.ismobile(context);
-    final isdesktop = Responsive.isdesktop(context);
-    final isTablet = Responsive.istablet(context);
+    final isDesktop = Responsive.isdesktop(context);
+    final screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: BackgroundColor,
+      bottomNavigationBar:
+          isMobile
+              ? BottomNavigationBar(
+                backgroundColor: BackgroundColor,
+                selectedItemColor: secondarycolor,
+                unselectedItemColor: Colors.white.withOpacity(0.3),
+                currentIndex: selectedindex,
+                onTap: _onnavibarmobile,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home),
+                    label: "Home",
+                  ),
+
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person),
+
+                    label: "About",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.work),
+                    label: "projects",
+                  ),
+
+                  BottomNavigationBarItem(icon: Icon(Icons.contact_mail)),
+                ],
+              )
+              : null,
       body: Stack(
         children: [
           // Positioned(
@@ -77,76 +127,78 @@ class _HomepageState extends State<Homepage> {
               physics: AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: isMobile ? 40 : 80,
-                      vertical: isMobile ? 40 : 80,
-                    ),
-                    child: Row(
-                      children: [
-                        Transform.rotate(
-                          angle: 70,
-                          child: Container(
-                            height: 35,
-                            width: 35,
-                            decoration: BoxDecoration(
-                              border: Border.all(color: secondarycolor),
-                              shape: BoxShape.rectangle,
-                            ),
-                            alignment: Alignment.center,
+                  if (isDesktop)
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: screenwidth * 0.05,
+                          vertical: 30,
+                        ),
+                        child: Row(
+                          children: [
+                            Transform.rotate(
+                              angle: 70,
+                              child: Container(
+                                height: 35,
+                                width: 35,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: secondarycolor),
+                                  shape: BoxShape.rectangle,
+                                ),
+                                alignment: Alignment.center,
 
-                            child: Transform.rotate(
-                              angle: 40,
-                              child: Text(
-                                "S",
-                                style: TextStyle(
-                                  color: secondarycolor,
-                                  fontSize: 12,
+                                child: Transform.rotate(
+                                  angle: 40,
+                                  child: Text(
+                                    "S",
+                                    style: TextStyle(
+                                      color: secondarycolor,
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                        SizedBox(width: 550),
+                            Spacer(),
 
-                        _buildNavButton("Home", homeKey),
-                        SizedBox(width: isMobile ? 10 : 15),
-                        _buildNavButton("About", aboutKey),
-                        SizedBox(width: isMobile ? 10 : 15),
-                        _buildNavButton("Projects", projectKey),
-                        SizedBox(width: isMobile ? 10 : 15),
-                        _buildNavButton("Contact", contactKey),
-                        SizedBox(width: 600),
-                        socialIcon(
-                          FontAwesomeIcons.github,
-                          "https://github.com/zalim-388",
-                        ),
+                            _buildNavButton("Home", homeKey),
+                            SizedBox(width: 15),
+                            _buildNavButton("About", aboutKey),
+                            SizedBox(width: 15),
+                            _buildNavButton("Projects", projectKey),
+                            SizedBox(width: 15),
+                            _buildNavButton("Contact", contactKey),
+                            Spacer(),
 
-                        SizedBox(height: 20),
-                        socialIcon(
-                          FontAwesomeIcons.linkedin,
-                          "https://www.linkedin.com/in/salim-a31335351/",
-                        ),
-                        SizedBox(height: 20),
-                        socialIcon(
-                          FontAwesomeIcons.instagram,
-                          "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-                        ),
-                        SizedBox(height: 20),
+                            Row(
+                              children: [
+                                socialIcon(
+                                  FontAwesomeIcons.github,
+                                  "https://github.com/zalim-388",
+                                ),
 
-                        // _socialIcon(
-                        //   FontAwesomeIcons.x,
-                        //   "https://x.com/zaalim388?t=utLG5FPHyEPqxAdoD9xMuw&s=09https://whatsapp.com/channel/0029Vb3Gslq6hENhWfOcV",
-                        // ),
-                      ],
+                                SizedBox(height: 20),
+                                socialIcon(
+                                  FontAwesomeIcons.linkedin,
+                                  "https://www.linkedin.com/in/salim-a31335351/",
+                                ),
+                                SizedBox(height: 20),
+                                socialIcon(
+                                  FontAwesomeIcons.instagram,
+                                  "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
                   // MAIN SECTION
                   Container(
                     key: homeKey,
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(
-                      horizontal: isMobile ? 30 : 150,
+                      horizontal: isMobile ? 20 : screenwidth * 0.1,
                       vertical: isMobile ? 30 : 150,
                     ),
                     child: Padding(
@@ -238,8 +290,6 @@ class _HomepageState extends State<Homepage> {
                                                 ),
                                               ),
                                     ),
-
-                                    SizedBox(width: 20),
                                   ],
                                 ),
                               ],
@@ -254,21 +304,22 @@ class _HomepageState extends State<Homepage> {
                     key: aboutKey,
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(
-                      horizontal: isMobile ? 30 : 150,
+                      horizontal: isMobile ? 20 : screenwidth * 0.1,
                       vertical: isMobile ? 30 : 50,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(child: Aboutme()),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: VerticalDivider(
-                            thickness: 1,
-                            color: Colors.white.withOpacity(0.3),
-                            width: 20,
+                        if (isDesktop)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: VerticalDivider(
+                              thickness: 1,
+                              color: Colors.white.withOpacity(0.3),
+                              width: 20,
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -277,21 +328,22 @@ class _HomepageState extends State<Homepage> {
                     key: projectKey,
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(
-                      horizontal: isMobile ? 30 : 150,
+                      horizontal: isMobile ? 20 : screenwidth * 0.1,
                       vertical: isMobile ? 30 : 50,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(child: ProjectScreen()),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: VerticalDivider(
-                            thickness: 1,
-                            color: Colors.white.withOpacity(0.3),
-                            width: 20,
+                        if (isDesktop)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: VerticalDivider(
+                              thickness: 1,
+                              color: Colors.white.withOpacity(0.3),
+                              width: 20,
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -300,21 +352,22 @@ class _HomepageState extends State<Homepage> {
                     key: contactKey,
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(
-                      horizontal: isMobile ? 30 : 150,
+                      horizontal: isMobile ? 20 : screenwidth * 0.1,
                       vertical: isMobile ? 30 : 50,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Expanded(child: ContactScreen()),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: VerticalDivider(
-                            thickness: 1,
-                            color: Colors.white.withOpacity(0.3),
-                            width: 20,
+                        if (isDesktop)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 20),
+                            child: VerticalDivider(
+                              thickness: 1,
+                              color: Colors.white.withOpacity(0.3),
+                              width: 20,
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
@@ -322,6 +375,38 @@ class _HomepageState extends State<Homepage> {
               ),
             ),
           ),
+
+          // Footer with Social Icons for Mobile
+          if (isMobile)
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      socialIcon(
+                        FontAwesomeIcons.github,
+                        "https://github.com/zalim-388",
+                      ),
+                      socialIcon(
+                        FontAwesomeIcons.linkedin,
+                        "https://www.linkedin.com/in/salim-a31335351/",
+                      ),
+                      socialIcon(
+                        FontAwesomeIcons.instagram,
+                        "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "© 2025 Salim. All rights reserved.",
+                    style: TextStyle(color: Colors.white.withOpacity(0.5)),
+                  ),
+                ],
+              ),
+            ),
 
           // 🔹 Fixed Vertical Divider
           // Positioned(

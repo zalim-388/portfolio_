@@ -82,7 +82,7 @@ class _AboutmeState extends State<Aboutme> {
                   color: description,
                 ),
               ),
-
+              SizedBox(height: 20),
               Row(
                 children: [
                   SvgPicture.asset(
@@ -91,42 +91,42 @@ class _AboutmeState extends State<Aboutme> {
                     width: 40,
                   ),
 
-SizedBox(width: 20),
+                  SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/dart-svgrepo-com.svg",
                     height: 40,
                     width: 40,
                   ),
 
-SizedBox(width: 20),
+                  SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/firebase-svgrepo-com.svg",
                     height: 40,
                     width: 40,
                   ),
 
-SizedBox(width: 20),
+                  SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/bloc-svgrepo-com.svg",
                     height: 40,
                     width: 40,
                   ),
 
-SizedBox(width: 20),
+                  SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/git-svgrepo-com.svg",
                     height: 40,
                     width: 40,
                   ),
 
-SizedBox(width: 20),
+                  SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/figma-svgrepo-com.svg",
                     height: 40,
                     width: 40,
                   ),
 
-SizedBox(width: 20),
+                  SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/api-svgrepo-com.svg",
                     height: 40,
