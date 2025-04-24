@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:personalportfolio/utils/Appcolor.dart';
+import 'package:personalportfolio/utils/SocialIcon.dart';
 import 'package:personalportfolio/utils/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
   const ContactScreen({super.key});
@@ -21,42 +25,134 @@ class ContactScreen extends StatelessWidget {
         crossAxisAlignment:
             isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 250),
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.1,
+              height: 1,
+              color: Colors.white.withOpacity(0.3),
+            ),
+          ),
+          const SizedBox(height: 30),
           Text(
             "Let's Connect",
             style: TextStyle(
               fontSize: isMobile ? 24 : 36,
-              color: Colors.white,
               fontWeight: FontWeight.bold,
+              foreground: Paint()
+                ..shader = const LinearGradient(
+                  colors: [secondarycolor, Colors.blueAccent],
+                ).createShader(const Rect.fromLTWH(0, 0, 300, 0)),
             ),
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 10),
           Text(
-            "Feel free to reach out via email or follow me on social media!",
-            textAlign: isMobile ? TextAlign.center : TextAlign.left,
-            style: TextStyle(
-              fontSize: isMobile ? 14 : 18,
-              color: Colors.white70,
+            "I’m always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
+            style: GoogleFonts.inter(
+              fontSize: isMobile ? 16 : 18,
+              color: description,
             ),
           ),
-          SizedBox(height: 40),
-          ElevatedButton.icon(
-            onPressed: () {
-              // open email app or contact form
-            },
-            icon: Icon(Icons.mail),
-            label: Text("Email Me"),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-              textStyle: TextStyle(fontSize: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
+          const SizedBox(height: 30),
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.05),
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.white.withOpacity(0.1)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Contact",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                emailButton(),
+                const SizedBox(height: 30),
+                Wrap(
+                  spacing: 20,
+                  runSpacing: 10,
+                  children: [
+                    socialIcon(
+                      FontAwesomeIcons.x,
+                      "https://x.com/zaalim388",
+                    ),
+                    socialIcon(
+                      FontAwesomeIcons.github,
+                      "https://github.com/zalim-388",
+                    ),
+                    socialIcon(
+                      FontAwesomeIcons.linkedin,
+                      "https://www.linkedin.com/in/salim-a31335351/",
+                    ),
+                    socialIcon(
+                      FontAwesomeIcons.instagram,
+                      "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
+                    ),
+                    socialIcon(
+                      FontAwesomeIcons.whatsapp,
+                      "https://wa.me/919562791690",
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
       ),
     );
   }
+}
+
+Widget emailButton() {
+  bool isHovered = false;
+
+  return StatefulBuilder(
+    builder: (context, setState) {
+      return MouseRegion(
+        onEnter: (_) => setState(() => isHovered = true),
+        onExit: (_) => setState(() => isHovered = false),
+        child: GestureDetector(
+          onTap: () {
+            final Uri emailLaunchUri = Uri(
+              scheme: "mailto",
+              path: 'zaalim388@gmail.com',
+              query: Uri.encodeFull(
+                'subject=Contact from Portfolio&body=Hello Salim,',
+              ),
+            );
+            launchUrl(emailLaunchUri);
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(
+                Icons.email_outlined,
+                size: 20,
+                color: isHovered
+                    ? secondarycolor.withOpacity(0.7)
+                    : Colors.white.withOpacity(0.6),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                "zaalim388@gmail.com",
+                style: TextStyle(
+                  color: isHovered
+                      ? secondarycolor.withOpacity(0.7)
+                      : Colors.white.withOpacity(0.6),
+                  fontSize: 16,
+                  letterSpacing: 1.2,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }
