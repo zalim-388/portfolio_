@@ -7,7 +7,7 @@ import 'package:personalportfolio/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({super.key});
+  const ContactScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {

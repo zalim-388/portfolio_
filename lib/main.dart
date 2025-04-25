@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:personalportfolio/screens/homepage.dart';
-import 'package:personalportfolio/utils/responsive.dart';
 
 void main() {
   runApp(const MyApp());
