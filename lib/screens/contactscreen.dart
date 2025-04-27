@@ -7,28 +7,27 @@ import 'package:personalportfolio/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {
-  const ContactScreen({super.key,});
+  const ContactScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isMobile = Responsive.ismobile(context);
+    final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
-      height: MediaQuery.of(context).size.height,
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? 20 : 100,
+        horizontal: isMobile ? 20 : screenWidth * 0.1,
         vertical: 60,
       ),
       decoration: BoxDecoration(color: BackgroundColor),
       child: Column(
-        crossAxisAlignment:
-            isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+        crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 250),
+            padding: EdgeInsets.only(left: isMobile ? 0 : screenWidth * 0.1),
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.1,
+              width: screenWidth * 0.1,
               height: 1,
               color: Colors.white.withOpacity(0.3),
             ),
@@ -52,6 +51,7 @@ class ContactScreen extends StatelessWidget {
               fontSize: isMobile ? 16 : 18,
               color: description,
             ),
+            textAlign: isMobile ? TextAlign.center : TextAlign.start,
           ),
           const SizedBox(height: 30),
           Container(
@@ -62,7 +62,7 @@ class ContactScreen extends StatelessWidget {
               border: Border.all(color: Colors.white.withOpacity(0.1)),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Contact",
@@ -77,6 +77,7 @@ class ContactScreen extends StatelessWidget {
                 Wrap(
                   spacing: 20,
                   runSpacing: 10,
+                  alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
                   children: [
                     socialIcon(
                       FontAwesomeIcons.x,
