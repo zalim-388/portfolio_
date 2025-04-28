@@ -14,6 +14,16 @@ class Aboutme extends StatefulWidget {
 class _AboutmeState extends State<Aboutme> {
   bool isHovered = false;
 
+  List<Map<String, dynamic>> skill = [
+    {"icon": "assets/icon/flutter-svgrepo-com.svg", "name": "Flutter"},
+    {"icon": "assets/icon/dart-svgrepo-com.svg", "name": "dart"},
+    {"Icon": "assets/icon/firebase-svgrepo-com.svg", "name": "Firebase"},
+    {"icon": "assets/icon/bloc-svgrepo-com.svg", "name": "Bloc"},
+    {"Icon": "assets/icon/git-svgrepo-com.svg", "name": "Git"},
+    {"icon": "assets/icon/figma-svgrepo-com.svg", "name": "Figma"},
+    {"icon": "assets/icon/api-svgrepo-com.svg", "name": "API"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     final isMobile = Responsive.ismobile(context);
@@ -30,15 +40,14 @@ class _AboutmeState extends State<Aboutme> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (isDesktop)
-            Padding(
-              padding: EdgeInsets.only(left: screenWidth * 0.1),
-              child: Container(
-                width: screenWidth * 0.1,
-                height: 1,
-                color: Colors.white.withOpacity(0.3),
-              ),
+          Padding(
+            padding: EdgeInsets.only(left: screenWidth * 0.1),
+            child: Container(
+              width: screenWidth * 0.1,
+              height: 1,
+              color: Colors.white.withOpacity(0.3),
             ),
+          ),
           const SizedBox(height: 50),
           Text(
             "About Me",
@@ -49,18 +58,35 @@ class _AboutmeState extends State<Aboutme> {
             ),
           ),
           const SizedBox(height: 20),
-          Text(
-            "Hello! I’m Salim, a passionate Flutter developer\nwith experience in crafting sleek, responsive,\nand user-friendly mobile applications.\n\n"
-            "I specialize in designing intuitive \nUI and developing functional apps using Flutter.\nIf you're looking for a dedicated developer\nto bring your ideas to life, let's connect!\n\n",
-            style: GoogleFonts.inter(
-              fontSize: isMobile ? 14 : 16,
-              fontWeight: FontWeight.normal,
-              color: const Color(0xFFB0B0B0),
-              height: 1.6,
-            ),
-            textAlign: isMobile ? TextAlign.start : TextAlign.start,
+          Row(
+            children: [
+              Text(
+                "Hello! I’m Salim, a passionate Flutter developer\nwith experience in crafting sleek, responsive,\nand user-friendly mobile applications.\n\n"
+                "I specialize in designing intuitive \nUI and developing functional apps using Flutter.\nIf you're looking for a dedicated developer\nto bring your ideas to life, let's connect!\n\n",
+                style: GoogleFonts.inter(
+                  fontSize: isMobile ? 14 : 16,
+                  fontWeight: FontWeight.normal,
+                  color: const Color(0xFFB0B0B0),
+                  height: 1.6,
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 200),
+                child: Container(
+                  height: 400,
+                  width: 400,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/image/laptop.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 60),
+          // SizedBox(height: 60),
           Text(
             "Skills",
             style: GoogleFonts.poppins(
@@ -78,57 +104,37 @@ class _AboutmeState extends State<Aboutme> {
               color: description,
             ),
           ),
-          const SizedBox(height: 20),
-          Wrap(
-            spacing: 20,
-            runSpacing: 20,
-            children: [
-              SvgPicture.asset(
-                'assets/icon/flutter-svgrepo-com.svg',
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-              SvgPicture.asset(
-                "assets/icon/dart-svgrepo-com.svg",
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-              SvgPicture.asset(
-                "assets/icon/firebase-svgrepo-com.svg",
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-              SvgPicture.asset(
-                "assets/icon/bloc-svgrepo-com.svg",
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-              SvgPicture.asset(
-                "assets/icon/git-svgrepo-com.svg",
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-              SvgPicture.asset(
-                "assets/icon/figma-svgrepo-com.svg",
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-              SvgPicture.asset(
-                "assets/icon/api-svgrepo-com.svg",
-                height: isMobile ? 30 : 40,
-                width: isMobile ? 30 : 40,
-              ),
-            ],
-          ),
-          if (isDesktop)
-            const Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: VerticalDivider(
-                thickness: 1,
-                color: Colors.white70,
-                width: 20,
-              ),
+
+          Container(
+            height: 100,
+
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: skill.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        skill[index]["icon"].toString(),
+                        height: isMobile ? 30 : 40,
+                        width: isMobile ? 30 : 40,
+                      ),
+
+                      // Text(
+                      //   skill[index]["name"],
+                      //   style: GoogleFonts.inter(
+                      //     fontSize: isMobile ? 12 : 14,
+                      //     color: Colors.white,
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                );
+              },
             ),
+          ),
         ],
       ),
     );
