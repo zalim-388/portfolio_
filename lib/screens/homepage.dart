@@ -8,6 +8,8 @@ import 'package:personalportfolio/utils/Appcolor.dart';
 import 'package:personalportfolio/utils/SocialIcon.dart';
 import 'package:personalportfolio/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:lottie/lottie.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -120,6 +122,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 if (isDesktop)
                   Container(
+                    width: double.infinity,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: screenwidth * 0.05,
@@ -188,6 +191,7 @@ class _HomepageState extends State<Homepage> {
                 // Footer with Social Icons for Mobile
                 if (isMobile)
                   Container(
+                    width: double.infinity,
                     padding: EdgeInsets.symmetric(vertical: 40),
                     child: Column(
                       children: [
@@ -223,7 +227,7 @@ class _HomepageState extends State<Homepage> {
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(
                     horizontal: isMobile ? 20 : screenwidth * 0.1,
-                    vertical: isMobile ? 100 : 150,
+                    vertical: isMobile ? 250 : 280,
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
@@ -238,8 +242,9 @@ class _HomepageState extends State<Homepage> {
                         Text(
                           "Hi, I'm Salim 👋",
                           style: TextStyle(
-                            fontSize: isMobile ? 20 : 32,
+                            fontSize: isMobile ? 18 : 25,
                             color: secondarycolor,
+                            fontWeight: FontWeight.normal,
                           ),
                         ),
                         SizedBox(height: 10),
@@ -275,53 +280,38 @@ class _HomepageState extends State<Homepage> {
                             onExit:
                                 (event) => setState(() => isHovered = false),
 
-                            child:
-                                isHovered
-                                    ? GestureDetector(
-                                      onTap: () {
-                                        print("Download CV clicked");
-                                        _launchUrl("https://your-cv-url.com");
-                                      },
-                                      child: Container(
-                                        height: 40,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            color: secondarycolor,
-                                          ),
-                                          color: secondarycolor.withOpacity(
-                                            0.3,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            1,
-                                          ),
-                                        ),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          "Download CV",
-                                          style: TextStyle(
-                                            color: secondarycolor.withOpacity(
-                                              0.2,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                    : Container(
-                                      height: 40,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                          color: secondarycolor,
-                                        ),
-                                        borderRadius: BorderRadius.circular(1),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        "Download CV",
-                                        style: TextStyle(color: secondarycolor),
-                                      ),
-                                    ),
+                            child: GestureDetector(
+                              onTap: () {
+                                print("Download CV clicked");
+                                _launchUrl("https://your-cv-url.com");
+                              },
+                              child: Container(
+                                height: 40,
+                                width: 250,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color:
+                                        isHovered
+                                            ? Colors.white
+                                            : Colors.transparent,
+                                  ),
+                                  color:
+                                      isHovered
+                                          ? Colors.transparent
+                                          : secondarycolor,
+
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Download CV",
+                                  style: TextStyle(
+                                    color:
+                                        isHovered ? Colors.white : Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ],
@@ -331,246 +321,28 @@ class _HomepageState extends State<Homepage> {
 
                 SizedBox(
                   key: aboutKey,
+                  height: isMobile ? 1200 : 900,
                   width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 40,
-                    ),
-                    child: const Aboutme(),
-                  ),
+
+                  child: const Aboutme(),
                 ),
                 SizedBox(
                   key: projectKey,
+                  height: isMobile ? 1200 : 1500,
                   width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 40,
-                    ),
-                    child: const ProjectScreen(),
-                  ),
+
+                  child: const ProjectScreen(),
                 ),
                 SizedBox(
                   key: contactKey,
+                  height: isMobile ? 800 : 1000,
                   width: double.infinity,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 40,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ContactScreen(),
-                        if (isDesktop)
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
-                            child: VerticalDivider(
-                              thickness: 1,
-                              color: Colors.white70,
-                              width: 20,
-                            ),
-                          ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+
+                  child: const ContactScreen(),
+                ),
+              ],
             ),
           ),
-
-          // Footer with Social Icons for Mobile
-          // if (isMobile)
-          //   Container(
-          //     padding: EdgeInsets.symmetric(vertical: 40),
-          //     child: Column(
-          //       children: [
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           children: [
-          //             socialIcon(
-          //               FontAwesomeIcons.github,
-          //               "https://github.com/zalim-388",
-          //             ),
-          //             socialIcon(
-          //               FontAwesomeIcons.linkedin,
-          //               "https://www.linkedin.com/in/salim-a31335351/",
-          //             ),
-          //             socialIcon(
-          //               FontAwesomeIcons.instagram,
-          //               "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-          //             ),
-
-          //             socialIcon(FontAwesomeIcons.x, "https://x.com/zaalim388"),
-          //           ],
-          //         ),
-          //         SizedBox(height: 200),
-
-          // MAIN SECTION mobile
-
-          // 🔹 Fixed Vertical Divider
-          // Positioned(
-          //   left: 60,
-          //   bottom: 0,
-          //   child: Column(
-          //     children: [
-          //       // _socialIcon(
-          //       //   FontAwesomeIcons.github,
-          //       //   "https://github.com/zalim-388",
-          //       // ),
-
-          //       // SizedBox(height: 20),
-          //       // _socialIcon(
-          //       //   FontAwesomeIcons.linkedin,
-          //       //   "https://www.linkedin.com/in/salim-a31335351/",
-          //       // ),
-          //       // SizedBox(height: 20),
-          //       // _socialIcon(
-          //       //   FontAwesomeIcons.instagram,
-          //       //   "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-          //       // ),
-          //       // SizedBox(height: 20),
-
-          //       // _socialIcon(
-          //       //   FontAwesomeIcons.x,
-          //       //   "https://x.com/zaalim388?t=utLG5FPHyEPqxAdoD9xMuw&s=09https://whatsapp.com/channel/0029Vb3Gslq6hENhWfOcV",
-          //       // ),
-          //       SizedBox(height: 20),
-          //       Container(
-          //         height: MediaQuery.of(context).size.height * 0.2,
-          //         width: 1,
-          //         color: Colors.white.withOpacity(0.1),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-
-          // Positioned(
-          //   right: 0,
-          //   bottom: 0,
-          //   child: Column(
-          //     children: [
-          //       // MouseRegion(
-          //       //   onEnter: (_) => setState(() => isHovered = true),
-          //       //   onExit: (_) => setState(() => isHovered = false),
-          //       //   child:
-          //       //       isHovered
-          //       //           ? Transform.rotate(
-          //       //             angle: 90 * 3.1416 / 180,
-          //       //             child: GestureDetector(
-          //       //               onTap: () {
-          //       //                 final Uri emaillaunchuri = Uri(
-          //       //                   scheme: "mailto",
-          //       //                   path: 'zaalim388@gmail.com',
-          //       //                   query: Uri.encodeFull(
-          //       //                     'subject=Contact from Portfolio&body=Hello Salim,',
-          //       //                   ),
-          //       //                 );
-          //       //                 launchUrl(emaillaunchuri);
-          //       //               },
-          //       //               child: Text(
-          //       //                 "zaalim388@gmail.com",
-          //       //                 style: TextStyle(
-          //       //                   color: secondarycolor.withOpacity(0.5),
-          //       //                   fontSize: 16,
-          //       //                   letterSpacing: 1.2,
-          //       //                 ),
-          //       //               ),
-          //       //             ),
-          //       //           )
-          //       //           : Transform.rotate(
-          //       //             angle: 90 * 3.1416 / 180,
-          //       //             child: Text(
-          //       //               "zaalim388@gmail.com",
-          //       //               style: TextStyle(
-          //       //                 color: Colors.white.withOpacity(0.5),
-          //       //                 fontSize: 16,
-          //       //                 letterSpacing: 1.2,
-          //       //               ),
-          //       //             ),
-          //       //           ),
-          //       // ),
-          //       SizedBox(height: 20),
-          //       Container(
-          //         height: MediaQuery.of(context).size.height * 0.3,
-          //         width: 1,
-          //         color: Colors.white.withOpacity(0.1),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-          //   ],
-          // ),
-          //       )
-
-if (isMobile)
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            socialIcon(
-                              FontAwesomeIcons.github,
-                              "https://github.com/zalim-388",
-                            ),
-                            const SizedBox(width: 20),
-                            socialIcon(
-                              FontAwesomeIcons.linkedin,
-                              "https://www.linkedin.com/in/salim-a31335351/",
-                            ),
-                            const SizedBox(width: 20),
-                            socialIcon(
-                              FontAwesomeIcons.instagram,
-                              "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-                            ),
-                            const SizedBox(width: 20),
-                            socialIcon(
-                              FontAwesomeIcons.xTwitter,
-                              "https://x.com/zaalim388",
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Text(
-                          "© 2025 Salim. All rights reserved.",
-                          style: TextStyle(color: Colors.white.withOpacity(0.5)),
-                        ),
-
-
-
-                        const SizedBox(height: 20),
-Column(
-    children: [
-      Container(
-        key: homeKey,
-        child: Homepage(), // Your custom widget or content
-      ),
-      Container(
-        key: aboutKey,
-        child: Aboutme(),
-      ),
-      Container(
-        key: projectKey,
-        child: ProjectScreen(),
-      ),
-      Container(
-        key: contactKey,
-        child: ContactScreen(),
-      ),
-    ],
-  ),
-
-
-
-                      ],
-                    ),
-                  ),
-
-
-
         ],
       ),
     );
@@ -612,8 +384,9 @@ Column(
                       child: Text(
                         title,
                         style: const TextStyle(
-                          color: Color(0xFFCCD6F6),
+                          color: normalColor,
 
+                          // color: Color(0xFFCCD6F6),
                           fontSize: 16,
                         ),
                       ),

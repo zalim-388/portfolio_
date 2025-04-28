@@ -13,7 +13,7 @@ Widget socialIcon(IconData icon, String url) {
         onExit: (event) => setState(() => isHovered = false),
         child: IconButton(
           onPressed: () => launchUrl(Uri.parse(url)),
-          icon: Icon(icon, size: 20, color: isHovered ? secondarycolor : description),
+          icon: Icon(icon, size: 20, color: isHovered ?  secondarycolor: normalColor),
         ),
       );
     },

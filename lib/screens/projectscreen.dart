@@ -19,10 +19,10 @@ class ProjectScreen extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: isMobile ? 16 : screenWidth * 0.1,
-          vertical: isMobile ? 20 : 40,
+          vertical: isMobile ? 60 : 50,
         ),
         child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -35,10 +35,18 @@ class ProjectScreen extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               Text(
-                "Some Things I've Built",
+                "Some Things I've Build",
                 style: GoogleFonts.poppins(
                   fontSize: isMobile ? 18 : 24,
-                  color: Colors.white,
+                  
+              foreground:
+                    Paint()
+                      ..shader = const LinearGradient(
+                        colors: [secondarycolor, normalColor],
+                      ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
+          
+                  // color: secondarycolor,
+                  // // color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -81,7 +89,7 @@ class ProjectScreen extends StatelessWidget {
                 githubUrl: "https://github.com/zalim-388/instagram.git",
                 isReverse: false,
               ),
-              SizedBox(height: 70),
+          
             ],
           ),
         ),
@@ -137,7 +145,8 @@ class ProjectScreen extends StatelessWidget {
           width: isMobile ? double.infinity : screenWidth * 0.25,
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Color(0xB224324B),
+color: secondarycolor.withOpacity(0.1),
+              // color: Colors.white.withOpacity(0.05),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(

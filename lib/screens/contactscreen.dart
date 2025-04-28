@@ -18,35 +18,36 @@ class ContactScreen extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 20 : screenWidth * 0.1,
-        vertical: 60,
+        vertical: 40,
       ),
       decoration: BoxDecoration(color: BackgroundColor),
       child: Column(
-        crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: isMobile ? 0 : screenWidth * 0.1),
+          Center(
             child: Container(
               width: screenWidth * 0.1,
               height: 1,
-              color: Colors.white.withOpacity(0.3),
+              color: Colors.white.withOpacity(0.1),
             ),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: 100),
           Text(
             "Let's Connect",
             style: TextStyle(
               fontSize: isMobile ? 24 : 36,
               fontWeight: FontWeight.bold,
-              foreground: Paint()
-                ..shader = const LinearGradient(
-                  colors: [secondarycolor, Colors.blueAccent],
-                ).createShader(const Rect.fromLTWH(0, 0, 300, 0)),
+
+              foreground:
+                  Paint()
+                    ..shader = const LinearGradient(
+                      colors: [secondarycolor, normalColor],
+                    ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
             ),
           ),
-          const SizedBox(height: 10),
+           SizedBox(height: 10),
           Text(
-            "I’m always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
+            "      I’m always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
             style: GoogleFonts.inter(
               fontSize: isMobile ? 16 : 18,
               color: description,
@@ -62,14 +63,14 @@ class ContactScreen extends StatelessWidget {
               border: Border.all(color: Colors.white.withOpacity(0.1)),
             ),
             child: Column(
-              crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+              crossAxisAlignment:
+                  isMobile
+                      ? CrossAxisAlignment.center
+                      : CrossAxisAlignment.start,
               children: [
                 const Text(
                   "Contact",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
                 const SizedBox(height: 10),
                 emailButton(),
@@ -77,12 +78,10 @@ class ContactScreen extends StatelessWidget {
                 Wrap(
                   spacing: 20,
                   runSpacing: 10,
-                  alignment: isMobile ? WrapAlignment.center : WrapAlignment.start,
+                  alignment:
+                      isMobile ? WrapAlignment.center : WrapAlignment.start,
                   children: [
-                    socialIcon(
-                      FontAwesomeIcons.x,
-                      "https://x.com/zaalim388",
-                    ),
+                    socialIcon(FontAwesomeIcons.x, "https://x.com/zaalim388"),
                     socialIcon(
                       FontAwesomeIcons.github,
                       "https://github.com/zalim-388",
@@ -135,17 +134,19 @@ Widget emailButton() {
               Icon(
                 Icons.email_outlined,
                 size: 20,
-                color: isHovered
-                    ? secondarycolor.withOpacity(0.7)
-                    : Colors.white.withOpacity(0.6),
+                color:
+                    isHovered
+                        ? secondarycolor.withOpacity(0.7)
+                        : Colors.white.withOpacity(0.6),
               ),
               const SizedBox(width: 10),
               Text(
                 "zaalim388@gmail.com",
                 style: TextStyle(
-                  color: isHovered
-                      ? secondarycolor.withOpacity(0.7)
-                      : Colors.white.withOpacity(0.6),
+                  color:
+                      isHovered
+                          ? secondarycolor.withOpacity(0.7)
+                          : Colors.white.withOpacity(0.6),
                   fontSize: 16,
                   letterSpacing: 1.2,
                 ),

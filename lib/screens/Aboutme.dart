@@ -17,9 +17,9 @@ class _AboutmeState extends State<Aboutme> {
   List<Map<String, dynamic>> skill = [
     {"icon": "assets/icon/flutter-svgrepo-com.svg", "name": "Flutter"},
     {"icon": "assets/icon/dart-svgrepo-com.svg", "name": "dart"},
-    {"Icon": "assets/icon/firebase-svgrepo-com.svg", "name": "Firebase"},
+    {"icon": "assets/icon/firebase-svgrepo-com.svg", "name": "Firebase"},
     {"icon": "assets/icon/bloc-svgrepo-com.svg", "name": "Bloc"},
-    {"Icon": "assets/icon/git-svgrepo-com.svg", "name": "Git"},
+    {"icon": "assets/icon/git-svgrepo-com.svg", "name": "Git"},
     {"icon": "assets/icon/figma-svgrepo-com.svg", "name": "Figma"},
     {"icon": "assets/icon/api-svgrepo-com.svg", "name": "API"},
   ];
@@ -40,20 +40,24 @@ class _AboutmeState extends State<Aboutme> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: screenWidth * 0.1),
+          Center(
             child: Container(
               width: screenWidth * 0.1,
               height: 1,
               color: Colors.white.withOpacity(0.3),
             ),
           ),
-          const SizedBox(height: 50),
+          SizedBox(height: 60),
           Text(
             "About Me",
             style: GoogleFonts.poppins(
               fontSize: isMobile ? 20 : 26,
-              color: Colors.white,
+
+              foreground:
+                  Paint()
+                    ..shader = const LinearGradient(
+                      colors: [secondarycolor, normalColor],
+                    ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -63,34 +67,34 @@ class _AboutmeState extends State<Aboutme> {
               Text(
                 "Hello! I’m Salim, a passionate Flutter developer\nwith experience in crafting sleek, responsive,\nand user-friendly mobile applications.\n\n"
                 "I specialize in designing intuitive \nUI and developing functional apps using Flutter.\nIf you're looking for a dedicated developer\nto bring your ideas to life, let's connect!\n\n",
+
                 style: GoogleFonts.inter(
                   fontSize: isMobile ? 14 : 16,
                   fontWeight: FontWeight.normal,
-                  color: const Color(0xFFB0B0B0),
-                  height: 1.6,
+                  color: description,
                 ),
               ),
 
-              Padding(
-                padding: const EdgeInsets.only(left: 200),
-                child: Container(
-                  height: 400,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/image/laptop.png"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 200),
+              //   child: Container(
+              //     height: 400,
+              //     width: 400,
+              //     decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //         image: AssetImage("assets/image/laptop.png"),
+              //         fit: BoxFit.cover,
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           // SizedBox(height: 60),
           Text(
             "Skills",
             style: GoogleFonts.poppins(
-              fontSize: isMobile ? 20 : 26,
+              fontSize: isMobile ? 18 : 24,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
@@ -104,10 +108,9 @@ class _AboutmeState extends State<Aboutme> {
               color: description,
             ),
           ),
-
+          SizedBox(height: 20),
           Container(
-            height: 100,
-
+            height: isMobile ? 70 : 100,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: skill.length,
@@ -121,19 +124,33 @@ class _AboutmeState extends State<Aboutme> {
                         height: isMobile ? 30 : 40,
                         width: isMobile ? 30 : 40,
                       ),
-
-                      // Text(
-                      //   skill[index]["name"],
-                      //   style: GoogleFonts.inter(
-                      //     fontSize: isMobile ? 12 : 14,
-                      //     color: Colors.white,
-                      //   ),
-                      // ),
                     ],
                   ),
                 );
               },
             ),
+          ),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 30),
+              Text(
+                'Experience',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Hands-on experience in crafting high-quality mobile applications using Flutter.\n'
+                'Specialized in building responsive UIs, integrating APIs, and delivering seamless user experiences.\n'
+                'Worked on various freelance and personal projects, focusing on clean architecture and performance optimization.',
+                style: TextStyle(fontSize: 16, color: Colors.white70),
+              ),
+            ],
           ),
         ],
       ),
