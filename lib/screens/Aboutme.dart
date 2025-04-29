@@ -32,7 +32,7 @@ class _AboutmeState extends State<Aboutme> {
 
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: BackgroundColor),
+      decoration: BoxDecoration(color: backgroundColor),
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 20 : screenWidth * 0.1,
         vertical: isMobile ? 30 : 50,
@@ -56,7 +56,7 @@ class _AboutmeState extends State<Aboutme> {
               foreground:
                   Paint()
                     ..shader = const LinearGradient(
-                      colors: [secondarycolor, normalColor],
+                      colors: [backgroundColor, normalColor],
                     ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
               fontWeight: FontWeight.bold,
             ),
@@ -71,7 +71,7 @@ class _AboutmeState extends State<Aboutme> {
                 style: GoogleFonts.inter(
                   fontSize: isMobile ? 14 : 16,
                   fontWeight: FontWeight.normal,
-                  color: description,
+                  color: descriptionColor,
                 ),
               ),
 
@@ -105,7 +105,7 @@ class _AboutmeState extends State<Aboutme> {
             style: GoogleFonts.inter(
               fontSize: isMobile ? 14 : 16,
               fontWeight: FontWeight.normal,
-              color: description,
+              color: descriptionColor,
             ),
           ),
           SizedBox(height: 20),

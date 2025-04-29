@@ -76,36 +76,36 @@ class _HomepageState extends State<Homepage> {
     final isDesktop = Responsive.isdesktop(context);
     final screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: BackgroundColor,
+      backgroundColor: backgroundColor,
 
       bottomNavigationBar:
           isMobile
               ? BottomNavigationBar(
-                selectedItemColor: secondarycolor,
+                selectedItemColor: secondaryColor,
                 unselectedItemColor: Colors.white.withOpacity(0.3),
                 currentIndex: selectedindex,
                 onTap: onNavBarTap,
                 items: [
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
 
                     icon: const Icon(Icons.home),
                     label: "Home",
                   ),
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
                     icon: const Icon(Icons.person),
 
                     label: "About",
                   ),
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
                     icon: const Icon(Icons.work),
 
                     label: "Projects",
                   ),
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
                     icon: const Icon(Icons.contact_mail),
 
                     label: "Contact",
@@ -136,7 +136,8 @@ class _HomepageState extends State<Homepage> {
                               height: 35,
                               width: 35,
                               decoration: BoxDecoration(
-                                border: Border.all(color: secondarycolor),
+                                border: Border.all(color: secondaryColor
+                      ),
                                 shape: BoxShape.rectangle,
                               ),
                               alignment: Alignment.center,
@@ -146,7 +147,7 @@ class _HomepageState extends State<Homepage> {
                                 child: Text(
                                   "S",
                                   style: TextStyle(
-                                    color: secondarycolor,
+                                    color: secondaryColor,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -243,7 +244,7 @@ class _HomepageState extends State<Homepage> {
                           "Hi, I'm Salim 👋",
                           style: TextStyle(
                             fontSize: isMobile ? 18 : 25,
-                            color: secondarycolor,
+                            color: secondaryColor,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -263,7 +264,7 @@ class _HomepageState extends State<Homepage> {
                           style: GoogleFonts.inter(
                             fontSize: isMobile ? 14 : 16,
                             fontWeight: FontWeight.normal,
-                            color: description,
+                            color: descriptionColor,
                             height: 1.6,
                           ),
                         ),
@@ -298,7 +299,7 @@ class _HomepageState extends State<Homepage> {
                                   color:
                                       isHovered
                                           ? Colors.transparent
-                                          : secondarycolor,
+                                          : secondaryColor,
 
                                   borderRadius: BorderRadius.circular(4),
                                 ),
@@ -365,7 +366,7 @@ class _HomepageState extends State<Homepage> {
                     OutlinedButton(
                       onPressed: () => scrollToSection(key),
                       style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: secondarycolor),
+                        side: BorderSide(color: secondaryColor),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(2),
                         ),
@@ -373,7 +374,7 @@ class _HomepageState extends State<Homepage> {
                       child: Text(
                         title,
                         style: TextStyle(
-                          color: secondarycolor,
+                          color: secondaryColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),

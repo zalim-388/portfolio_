@@ -20,7 +20,7 @@ class ContactScreen extends StatelessWidget {
         horizontal: isMobile ? 20 : screenWidth * 0.1,
         vertical: 40,
       ),
-      decoration: BoxDecoration(color: BackgroundColor),
+      decoration: BoxDecoration(color: backgroundColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -41,7 +41,7 @@ class ContactScreen extends StatelessWidget {
               foreground:
                   Paint()
                     ..shader = const LinearGradient(
-                      colors: [secondarycolor, normalColor],
+                      colors: [secondaryColor, normalColor],
                     ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
             ),
           ),
@@ -50,7 +50,7 @@ class ContactScreen extends StatelessWidget {
             "      I’m always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
             style: GoogleFonts.inter(
               fontSize: isMobile ? 16 : 18,
-              color: description,
+              color: descriptionColor,
             ),
             textAlign: isMobile ? TextAlign.center : TextAlign.start,
           ),
@@ -136,7 +136,7 @@ Widget emailButton() {
                 size: 20,
                 color:
                     isHovered
-                        ? secondarycolor.withOpacity(0.7)
+                        ? secondaryColor.withOpacity(0.7)
                         : Colors.white.withOpacity(0.6),
               ),
               const SizedBox(width: 10),
@@ -145,7 +145,7 @@ Widget emailButton() {
                 style: TextStyle(
                   color:
                       isHovered
-                          ? secondarycolor.withOpacity(0.7)
+                          ? secondaryColor.withOpacity(0.7)
                           : Colors.white.withOpacity(0.6),
                   fontSize: 16,
                   letterSpacing: 1.2,

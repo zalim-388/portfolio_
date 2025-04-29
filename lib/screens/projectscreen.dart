@@ -15,7 +15,7 @@ class ProjectScreen extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(color: BackgroundColor),
+      decoration: const BoxDecoration(color: backgroundColor),
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: isMobile ? 16 : screenWidth * 0.1,
@@ -42,7 +42,7 @@ class ProjectScreen extends StatelessWidget {
               foreground:
                     Paint()
                       ..shader = const LinearGradient(
-                        colors: [secondarycolor, normalColor],
+                        colors: [secondaryColor, normalColor],
                       ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
           
                   // color: secondarycolor,
@@ -126,7 +126,7 @@ class ProjectScreen extends StatelessWidget {
         Text(
           "Featured Project",
           style: GoogleFonts.poppins(
-            color: secondarycolor,
+            color: secondaryColor,
             fontSize: isMobile ? 14 : screenWidth * 0.009,
             fontWeight: FontWeight.w500,
           ),
@@ -145,14 +145,14 @@ class ProjectScreen extends StatelessWidget {
           width: isMobile ? double.infinity : screenWidth * 0.25,
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-color: secondarycolor.withOpacity(0.1),
+color: secondaryColor.withOpacity(0.1),
               // color: Colors.white.withOpacity(0.05),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
             descriptions,
             style: GoogleFonts.manrope(
-              color: description,
+              color: descriptionColor,
               fontSize: isMobile ? 14 : screenWidth * 0.01,
             ),
           ),
