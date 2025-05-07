@@ -13,15 +13,16 @@ class ProjectScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return SingleChildScrollView(
-      child: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(color: backgroundColor),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: isMobile ? 16 : screenWidth * 0.1,
-            vertical: isMobile ? 60 : 50,
-          ),
+    return Container(
+      width: double.infinity,
+      decoration: const BoxDecoration(color: BackgroundColor),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: isMobile ? 16 : screenWidth * 0.1,
+          vertical: isMobile ? 60 : 50,
+        ),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -37,12 +38,12 @@ class ProjectScreen extends StatelessWidget {
                 "Some Things I've Build",
                 style: GoogleFonts.poppins(
                   fontSize: isMobile ? 18 : 24,
-          
-                  foreground:
-                      Paint()
-                        ..shader = const LinearGradient(
-                          colors: [secondaryColor, normalColor],
-                        ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
+                  
+              foreground:
+                    Paint()
+                      ..shader = const LinearGradient(
+                        colors: [secondarycolor, normalColor],
+                      ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
           
                   // color: secondarycolor,
                   // // color: Colors.white,
@@ -158,8 +159,8 @@ class ProjectScreen extends StatelessWidget {
           width: isMobile ? double.infinity : screenWidth * 0.25,
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: secondaryColor.withOpacity(0.1),
-            // color: Colors.white.withOpacity(0.05),
+color: secondarycolor.withOpacity(0.1),
+              // color: Colors.white.withOpacity(0.05),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
