@@ -28,45 +28,85 @@ class _ContactScreenState extends State<ContactScreen> {
 
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        horizontal: isMobile ? 20 : screenWidth * 0.1,
-        vertical: 40,
-      ),
-      decoration: BoxDecoration(color: BackgroundColor),
+      // padding: EdgeInsets.symmetric(
+      //   horizontal: isMobile ? 20 : screenWidth * 0.1,
+      //   vertical: 80,
+      // ),
+      // decoration: BoxDecoration(color: backgroundColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
             child: Container(
               width: screenWidth * 0.1,
-              height: 1,
+              height: 2,
               color: Colors.white.withOpacity(0.1),
             ),
           ),
-          SizedBox(height: 100),
+
+          SizedBox(height: 80),
+
           Text(
             "Let's Connect",
-            style: TextStyle(
-              fontSize: isMobile ? 24 : 36,
+            style: GoogleFonts.poppins(
+              fontSize: isMobile ? 28 : 40,
               fontWeight: FontWeight.bold,
-
               foreground:
                   Paint()
-                    ..shader = const LinearGradient(
-                      colors: [secondarycolor, normalColor],
-                    ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
+                    ..shader = LinearGradient(
+                      colors: [secondaryColor, normalColor],
+                    ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
             ),
           ),
-           SizedBox(height: 10),
+          SizedBox(height: 16),
+
           Text(
-            "      I’m always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
+            "I'm always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
             style: GoogleFonts.inter(
               fontSize: isMobile ? 16 : 18,
-              color: description,
+              color: descriptionColor,
+              height: 1.5,
             ),
-            textAlign: isMobile ? TextAlign.center : TextAlign.start,
+            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 30),
+
+          SizedBox(height: 60),
+
+          _buildContactInfo(isMobile),
+
+          SizedBox(height: 80),
+
+          Text(
+            "© ${DateTime.now().year} Salim. All Rights Reserved.",
+            style: GoogleFonts.inter(
+              fontSize: 14,
+              color: Colors.white.withOpacity(0.4),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildContactInfo(bool isMobile) {
+    return Container(
+      width: isMobile ? 400 : 600,
+      padding: const EdgeInsets.all(40),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.03),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.white.withOpacity(0.08)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 30,
+            offset: Offset(0, 15),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
           Container(
             padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -298,25 +338,36 @@ class _ContactScreenState extends State<ContactScreen> {
               decoration: BoxDecoration(
                 color:
                     isHovered
-                        ? secondarycolor.withOpacity(0.7)
-                        : Colors.white.withOpacity(0.6),
-              ),
-              const SizedBox(width: 10),
-              Text(
-                "zaalim388@gmail.com",
-                style: TextStyle(
+                        ? secondaryColor.withOpacity(0.2)
+                        : Colors.white.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
                   color:
                       isHovered
-                          ? secondarycolor.withOpacity(0.7)
-                          : Colors.white.withOpacity(0.6),
-                  fontSize: 16,
-                  letterSpacing: 1.2,
+                          ? secondaryColor.withOpacity(0.3)
+                          : Colors.white.withOpacity(0.1),
                 ),
+                boxShadow:
+                    isHovered
+                        ? [
+                          BoxShadow(
+                            color: secondaryColor.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: Offset(0, 4),
+                          ),
+                        ]
+                        : [],
               ),
-            ],
+              child: Icon(
+                icon,
+                size: 22,
+                color:
+                    isHovered ? secondaryColor : Colors.white.withOpacity(0.7),
+              ),
+            ),
           ),
-        ),
-      );
-    },
-  );
+        );
+      },
+    );
+  }
 }

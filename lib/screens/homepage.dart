@@ -134,7 +134,7 @@ class _HomepageState extends State<Homepage> {
                               height: 35,
                               width: 35,
                               decoration: BoxDecoration(
-                                border: Border.all(color: secondarycolor),
+                                border: Border.all(color: secondaryColor),
                                 shape: BoxShape.rectangle,
                               ),
                               alignment: Alignment.center,
@@ -296,9 +296,18 @@ class _HomepageState extends State<Homepage> {
                                   ),
                                   gradient:
                                       isHovered
-                                          ? Colors.transparent
-                                          : secondarycolor,
-
+                                          ? LinearGradient(
+                                            colors: [
+                                              Colors.transparent,
+                                              normalColor.withOpacity(0.9),
+                                            ],
+                                          )
+                                          : LinearGradient(
+                                            colors: [
+                                              secondaryColor,
+                                              normalColor.withOpacity(0.7),
+                                            ],
+                                          ),
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 alignment: Alignment.center,

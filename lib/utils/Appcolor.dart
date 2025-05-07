@@ -10,6 +10,7 @@ const Color normalColor = Colors.white; // White
 
 
 
+
 // // Tech minimalist
 // const Color backgroundColor = Color(0xFF17252A); // Dark cyan
 // const Color secondaryColor = Color(0xFF3AAFA9); // Persian green
