@@ -449,3 +449,52 @@
               //     ),
               //   ],
               // ),
+
+
+
+
+                // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.start,
+          //   children: [
+          //     SizedBox(height: 30),
+          //     Text(
+          //       'Experience',
+          //       style: TextStyle(
+          //         fontSize: 24,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.white,
+          //       ),
+          //     ),
+          //     SizedBox(height: 10),
+          //     Text(
+          //       'Hands-on experience in crafting high-quality mobile applications using Flutter.\n'
+          //       'Specialized in building responsive UIs, integrating APIs, and delivering seamless user experiences.\n'
+          //       'Worked on various freelance and personal projects, focusing on clean architecture and performance optimization.',
+          //       style: TextStyle(fontSize: 16, color: Colors.white70),
+          //     ),
+          //   ],
+          // ),
+
+
+
+
+
+       // Padding(
+              //   padding: const EdgeInsets.only(left: 200),
+              //   child: Container(
+              //     height: 400,
+              //     width: 400,
+              //     decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //         image: AssetImage("assets/image/laptop.png"),
+              //         fit: BoxFit.cover,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+
+
+
+
+
+

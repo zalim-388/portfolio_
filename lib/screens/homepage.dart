@@ -8,8 +8,6 @@ import 'package:personalportfolio/utils/Appcolor.dart';
 import 'package:personalportfolio/utils/SocialIcon.dart';
 import 'package:personalportfolio/utils/responsive.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:lottie/lottie.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -76,36 +74,36 @@ class _HomepageState extends State<Homepage> {
     final isDesktop = Responsive.isdesktop(context);
     final screenwidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: BackgroundColor,
+      backgroundColor: backgroundColor,
 
       bottomNavigationBar:
           isMobile
               ? BottomNavigationBar(
-                selectedItemColor: secondarycolor,
+                selectedItemColor: secondaryColor,
                 unselectedItemColor: Colors.white.withOpacity(0.3),
                 currentIndex: selectedindex,
                 onTap: onNavBarTap,
                 items: [
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
 
                     icon: const Icon(Icons.home),
                     label: "Home",
                   ),
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
                     icon: const Icon(Icons.person),
 
                     label: "About",
                   ),
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
                     icon: const Icon(Icons.work),
 
                     label: "Projects",
                   ),
                   BottomNavigationBarItem(
-                    backgroundColor: BackgroundColor,
+                    backgroundColor: backgroundColor,
                     icon: const Icon(Icons.contact_mail),
 
                     label: "Contact",
@@ -136,7 +134,7 @@ class _HomepageState extends State<Homepage> {
                               height: 35,
                               width: 35,
                               decoration: BoxDecoration(
-                                border: Border.all(color: secondarycolor),
+                                border: Border.all(color: secondaryColor),
                                 shape: BoxShape.rectangle,
                               ),
                               alignment: Alignment.center,
@@ -146,7 +144,7 @@ class _HomepageState extends State<Homepage> {
                                 child: Text(
                                   "S",
                                   style: TextStyle(
-                                    color: secondarycolor,
+                                    color: secondaryColor,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -162,27 +160,26 @@ class _HomepageState extends State<Homepage> {
                           _buildNavButton("Projects", projectKey),
                           SizedBox(width: 15),
                           _buildNavButton("Contact", contactKey),
-                          Spacer(),
 
-                          Row(
-                            children: [
-                              socialIcon(
-                                FontAwesomeIcons.github,
-                                "https://github.com/zalim-388",
-                              ),
+                          // Row(
+                          //   children: [
+                          //     socialIcon(
+                          //       FontAwesomeIcons.github,
+                          //       "https://github.com/zalim-388",
+                          //     ),
 
-                              SizedBox(width: 20),
-                              socialIcon(
-                                FontAwesomeIcons.linkedin,
-                                "https://www.linkedin.com/in/salim-a31335351/",
-                              ),
-                              SizedBox(width: 20),
-                              socialIcon(
-                                FontAwesomeIcons.instagram,
-                                "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
-                              ),
-                            ],
-                          ),
+                          //     SizedBox(width: 20),
+                          //     socialIcon(
+                          //       FontAwesomeIcons.linkedin,
+                          //       "https://www.linkedin.com/in/salim-a31335351/",
+                          //     ),
+                          //     SizedBox(width: 20),
+                          //     socialIcon(
+                          //       FontAwesomeIcons.instagram,
+                          //       "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                     ),
@@ -243,7 +240,7 @@ class _HomepageState extends State<Homepage> {
                           "Hi, I'm Salim 👋",
                           style: TextStyle(
                             fontSize: isMobile ? 18 : 25,
-                            color: secondarycolor,
+                            color: secondaryColor,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
@@ -263,7 +260,7 @@ class _HomepageState extends State<Homepage> {
                           style: GoogleFonts.inter(
                             fontSize: isMobile ? 14 : 16,
                             fontWeight: FontWeight.normal,
-                            color: description,
+                            color: descriptionColor,
                             height: 1.6,
                           ),
                         ),
@@ -283,7 +280,9 @@ class _HomepageState extends State<Homepage> {
                             child: GestureDetector(
                               onTap: () {
                                 print("Download CV clicked");
-                                _launchUrl("https://your-cv-url.com");
+                                _launchUrl(
+                                  "https://drive.google.com/uc?export=download&id=1VtRVQYa9DTEEqSijQ89LuwFNh2NDB5s2",
+                                );
                               },
                               child: Container(
                                 height: 40,
@@ -295,11 +294,20 @@ class _HomepageState extends State<Homepage> {
                                             ? Colors.white
                                             : Colors.transparent,
                                   ),
-                                  color:
+                                  gradient:
                                       isHovered
-                                          ? Colors.transparent
-                                          : secondarycolor,
-
+                                          ? LinearGradient(
+                                            colors: [
+                                              Colors.transparent,
+                                              normalColor.withOpacity(0.9),
+                                            ],
+                                          )
+                                          : LinearGradient(
+                                            colors: [
+                                              secondaryColor,
+                                              normalColor.withOpacity(0.7),
+                                            ],
+                                          ),
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 alignment: Alignment.center,
@@ -321,21 +329,21 @@ class _HomepageState extends State<Homepage> {
 
                 SizedBox(
                   key: aboutKey,
-                  height: isMobile ? 1200 : 900,
+                  height: isMobile ? 900 : 900,
                   width: double.infinity,
 
                   child: const Aboutme(),
                 ),
                 SizedBox(
                   key: projectKey,
-                  height: isMobile ? 1200 : 1500,
+                  height: isMobile ? 900 : 1700,
                   width: double.infinity,
 
                   child: const ProjectScreen(),
                 ),
                 SizedBox(
                   key: contactKey,
-                  height: isMobile ? 800 : 1000,
+                  height: isMobile ? 1100 : 1300,
                   width: double.infinity,
 
                   child: const ContactScreen(),
@@ -343,6 +351,99 @@ class _HomepageState extends State<Homepage> {
               ],
             ),
           ),
+
+          // 🔹 Fixed Vertical Divider
+          if (isDesktop)
+            Positioned(
+              left: 60,
+              bottom: 0,
+              child: Column(
+                children: [
+                  socialIcon(
+                    FontAwesomeIcons.github,
+                    "https://github.com/zalim-388",
+                  ),
+
+                  SizedBox(height: 20),
+                  socialIcon(
+                    FontAwesomeIcons.linkedin,
+                    "https://www.linkedin.com/in/salim-a31335351/",
+                  ),
+                  SizedBox(height: 20),
+                  socialIcon(
+                    FontAwesomeIcons.instagram,
+                    "https://www.instagram.com/zaliiim__?igsh=emg5NTZ3Z3pjNGkz",
+                  ),
+                  SizedBox(height: 20),
+
+                  socialIcon(
+                    FontAwesomeIcons.x,
+                    "https://x.com/zaalim388?t=utLG5FPHyEPqxAdoD9xMuw&s=09https://whatsapp.com/channel/0029Vb3Gslq6hENhWfOcV",
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.2,
+                    width: 1,
+                    color: Colors.white.withOpacity(0.1),
+                  ),
+                ],
+              ),
+            ),
+          if (isDesktop)
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: Column(
+                children: [
+                  MouseRegion(
+                    onEnter: (_) => setState(() => isHovered = true),
+                    onExit: (_) => setState(() => isHovered = false),
+                    child:
+                        isHovered
+                            ? Transform.rotate(
+                              angle: 90 * 3.1416 / 180,
+                              child: GestureDetector(
+                                onTap: () {
+                                  final Uri emaillaunchuri = Uri(
+                                    scheme: "mailto",
+                                    path: 'zaalim388@gmail.com',
+                                    query: Uri.encodeFull(
+                                      'subject=Contact from Portfolio&body=Hello Salim,',
+                                    ),
+                                  );
+                                  launchUrl(emaillaunchuri);
+                                },
+                                child: Text(
+                                  "zaalim388@gmail.com",
+                                  style: TextStyle(
+                                    color: secondaryColor.withOpacity(0.5),
+                                    fontSize: 16,
+                                    letterSpacing: 1.2,
+                                  ),
+                                ),
+                              ),
+                            )
+                            : Transform.rotate(
+                              angle: 90 * 3.1416 / 180,
+                              child: Text(
+                                "zaalim388@gmail.com",
+                                style: TextStyle(
+                                  color: Colors.white.withOpacity(0.5),
+                                  fontSize: 16,
+                                  letterSpacing: 1.2,
+                                ),
+                              ),
+                            ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: 1,
+                    color: Colors.white.withOpacity(0.1),
+                  ),
+                ],
+              ),
+            ),
         ],
       ),
     );
@@ -365,7 +466,7 @@ class _HomepageState extends State<Homepage> {
                     OutlinedButton(
                       onPressed: () => scrollToSection(key),
                       style: OutlinedButton.styleFrom(
-                        side: BorderSide(color: secondarycolor),
+                        side: BorderSide(color: secondaryColor),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(2),
                         ),
@@ -373,7 +474,7 @@ class _HomepageState extends State<Homepage> {
                       child: Text(
                         title,
                         style: TextStyle(
-                          color: secondarycolor,
+                          color: secondaryColor,
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),

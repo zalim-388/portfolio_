@@ -32,7 +32,7 @@ class _AboutmeState extends State<Aboutme> {
 
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(color: BackgroundColor),
+      decoration: BoxDecoration(color: backgroundColor),
       padding: EdgeInsets.symmetric(
         horizontal: isMobile ? 20 : screenWidth * 0.1,
         vertical: isMobile ? 30 : 50,
@@ -47,7 +47,7 @@ class _AboutmeState extends State<Aboutme> {
               color: Colors.white.withOpacity(0.3),
             ),
           ),
-          SizedBox(height: 60),
+          SizedBox(height: 140),
           Text(
             "About Me",
             style: GoogleFonts.poppins(
@@ -56,12 +56,13 @@ class _AboutmeState extends State<Aboutme> {
               foreground:
                   Paint()
                     ..shader = const LinearGradient(
-                      colors: [secondarycolor, normalColor],
+                      colors: [secondaryColor, normalColor],
                     ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 20),
+
+          SizedBox(height: 20),
           Row(
             children: [
               Text(
@@ -69,28 +70,14 @@ class _AboutmeState extends State<Aboutme> {
                 "I specialize in designing intuitive \nUI and developing functional apps using Flutter.\nIf you're looking for a dedicated developer\nto bring your ideas to life, let's connect!\n\n",
 
                 style: GoogleFonts.inter(
-                  fontSize: isMobile ? 14 : 16,
+                  fontSize: isMobile ? 16 : 16,
                   fontWeight: FontWeight.normal,
-                  color: description,
+                  color: descriptionColor,
                 ),
               ),
-
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 200),
-              //   child: Container(
-              //     height: 400,
-              //     width: 400,
-              //     decoration: BoxDecoration(
-              //       image: DecorationImage(
-              //         image: AssetImage("assets/image/laptop.png"),
-              //         fit: BoxFit.cover,
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
-          // SizedBox(height: 60),
+          SizedBox(height: 60),
           Text(
             "Skills",
             style: GoogleFonts.poppins(
@@ -99,13 +86,13 @@ class _AboutmeState extends State<Aboutme> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           Text(
             "The skills, tools and technologies I use:",
             style: GoogleFonts.inter(
               fontSize: isMobile ? 14 : 16,
               fontWeight: FontWeight.normal,
-              color: description,
+              color: descriptionColor,
             ),
           ),
           SizedBox(height: 20),
@@ -119,38 +106,20 @@ class _AboutmeState extends State<Aboutme> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      SvgPicture.asset(
-                        skill[index]["icon"].toString(),
-                        height: isMobile ? 30 : 40,
-                        width: isMobile ? 30 : 40,
+                      Column(
+                        children: [
+                          SvgPicture.asset(
+                            skill[index]["icon"].toString(),
+                            height: isMobile ? 30 : 40,
+                            width: isMobile ? 30 : 40,
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 );
               },
             ),
-          ),
-
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 30),
-              Text(
-                'Experience',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Hands-on experience in crafting high-quality mobile applications using Flutter.\n'
-                'Specialized in building responsive UIs, integrating APIs, and delivering seamless user experiences.\n'
-                'Worked on various freelance and personal projects, focusing on clean architecture and performance optimization.',
-                style: TextStyle(fontSize: 16, color: Colors.white70),
-              ),
-            ],
           ),
         ],
       ),
