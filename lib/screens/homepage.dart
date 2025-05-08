@@ -288,27 +288,29 @@ class _HomepageState extends State<Homepage> {
                                 height: 40,
                                 width: 250,
                                 decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color:
-                                        isHovered
-                                            ? Colors.white
-                                            : Colors.transparent,
-                                  ),
-                                  gradient:
+                                  gradient: LinearGradient(
+                                    colors: [
                                       isHovered
-                                          ? LinearGradient(
-                                            colors: [
-                                              Colors.transparent,
-                                              normalColor.withOpacity(0.9),
-                                            ],
-                                          )
-                                          : LinearGradient(
-                                            colors: [
-                                              secondaryColor,
-                                              normalColor.withOpacity(0.7),
-                                            ],
-                                          ),
-                                  borderRadius: BorderRadius.circular(4),
+                                          ? secondaryColor
+                                          : secondaryColor.withOpacity(0.7),
+                                      isHovered
+                                          ? normalColor
+                                          : normalColor.withOpacity(0.7),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(30),
+                                  boxShadow:
+                                      isHovered
+                                          ? [
+                                            BoxShadow(
+                                              color: secondaryColor.withOpacity(
+                                                0.4,
+                                              ),
+                                              blurRadius: 15,
+                                              spreadRadius: 1,
+                                            ),
+                                          ]
+                                          : [],
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
@@ -329,10 +331,10 @@ class _HomepageState extends State<Homepage> {
 
                 SizedBox(
                   key: aboutKey,
-                  height: isMobile ? 900 : 900,
+                  height: isMobile ? 1100 : 1300,
                   width: double.infinity,
 
-                  child: const Aboutme(),
+                  child: Aboutme(contactKey: contactKey),
                 ),
                 SizedBox(
                   key: projectKey,

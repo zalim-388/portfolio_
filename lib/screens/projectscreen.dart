@@ -27,27 +27,51 @@ class ProjectScreen extends StatelessWidget {
             children: [
               Center(
                 child: Container(
-                  width: screenWidth * (isMobile ? 0.3 : 0.1),
-                  height: 1,
-                  color: Colors.white.withOpacity(0.3),
+                  width: screenWidth * 0.1,
+                  height: 2,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        secondaryColor.withOpacity(0.3),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              const SizedBox(height: 50),
-              Text(
-                "Some Things I've Build",
-                style: GoogleFonts.poppins(
-                  fontSize: isMobile ? 18 : 24,
-          
-                  foreground:
-                      Paint()
-                        ..shader = const LinearGradient(
-                          colors: [secondaryColor, normalColor],
-                        ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
-          
-                  // color: secondarycolor,
-                  // // color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+
+              SizedBox(height: 50),
+              Row(
+                children: [
+                  Container(
+                    height: 30,
+                    width: 5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                        colors: [secondaryColor, normalColor],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Text(
+                    "Some Things I've Build",
+                    style: GoogleFonts.poppins(
+                      fontSize: isMobile ? 18 : 24,
+
+                      foreground:
+                          Paint()
+                            ..shader = const LinearGradient(
+                              colors: [secondaryColor, normalColor],
+                            ).createShader(const Rect.fromLTWH(0, 0, 500, 50)),
+
+                      // color: secondarycolor,
+                      // // color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 70),
               // Project 1: Groceries App
@@ -88,7 +112,7 @@ class ProjectScreen extends StatelessWidget {
                 githubUrl: "https://github.com/zalim-388/instagram.git",
                 isReverse: false,
               ),
-          
+
               SizedBox(height: 70),
               // Project 4:  eco eats
               _buildProjectSection(

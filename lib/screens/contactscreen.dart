@@ -40,7 +40,15 @@ class _ContactScreenState extends State<ContactScreen> {
             child: Container(
               width: screenWidth * 0.1,
               height: 2,
-              color: Colors.white.withOpacity(0.1),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.transparent,
+                    secondaryColor.withOpacity(0.3),
+                    Colors.transparent,
+                  ],
+                ),
+              ),
             ),
           ),
 
