@@ -281,7 +281,7 @@ class _HomepageState extends State<Homepage> {
                               onTap: () {
                                 print("Download CV clicked");
                                 _launchUrl(
-                                  "https://drive.google.com/uc?export=download&id=1VtRVQYa9DTEEqSijQ89LuwFNh2NDB5s2",
+                                  "https://drive.google.com/uc?export=download&id=14Yehb3eaqDKExIvTUPBrHp7kN_g2zw0b",
                                 );
                               },
                               child: Container(

@@ -33,65 +33,67 @@ class _ContactScreenState extends State<ContactScreen> {
       //   vertical: 80,
       // ),
       // decoration: BoxDecoration(color: backgroundColor),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Container(
-              width: screenWidth * 0.1,
-              height: 2,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.transparent,
-                    secondaryColor.withOpacity(0.3),
-                    Colors.transparent,
-                  ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                width: screenWidth * 0.1,
+                height: 2,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.transparent,
+                      secondaryColor.withOpacity(0.3),
+                      Colors.transparent,
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
-          SizedBox(height: 80),
+            SizedBox(height: 80),
 
-          Text(
-            "Let's Connect",
-            style: GoogleFonts.poppins(
-              fontSize: isMobile ? 28 : 40,
-              fontWeight: FontWeight.bold,
-              foreground:
-                  Paint()
-                    ..shader = LinearGradient(
-                      colors: [secondaryColor, normalColor],
-                    ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+            Text(
+              "Let's Connect",
+              style: GoogleFonts.poppins(
+                fontSize: isMobile ? 28 : 40,
+                fontWeight: FontWeight.bold,
+                foreground:
+                    Paint()
+                      ..shader = LinearGradient(
+                        colors: [secondaryColor, normalColor],
+                      ).createShader(Rect.fromLTWH(0, 0, 200, 70)),
+              ),
             ),
-          ),
-          SizedBox(height: 16),
+            SizedBox(height: 16),
 
-          Text(
-            "I'm always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
-            style: GoogleFonts.inter(
-              fontSize: isMobile ? 16 : 18,
-              color: descriptionColor,
-              height: 1.5,
+            Text(
+              "I'm always open to discussing new projects,\ncreative ideas or opportunities to be part of your vision.",
+              style: GoogleFonts.inter(
+                fontSize: isMobile ? 16 : 18,
+                color: descriptionColor,
+                height: 1.5,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
-          ),
 
-          SizedBox(height: 60),
+            SizedBox(height: 60),
 
-          _buildContactInfo(isMobile),
+            _buildContactInfo(isMobile),
 
-          SizedBox(height: 80),
+            SizedBox(height: 80),
 
-          Text(
-            "© ${DateTime.now().year} Salim. All Rights Reserved.",
-            style: GoogleFonts.inter(
-              fontSize: 14,
-              color: Colors.white.withOpacity(0.4),
+            Text(
+              "© ${DateTime.now().year} Salim. All Rights Reserved.",
+              style: GoogleFonts.inter(
+                fontSize: 14,
+                color: Colors.white.withOpacity(0.4),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
