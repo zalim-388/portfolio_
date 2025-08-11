@@ -1,0 +1,35 @@
+{
+    "name": "Salim Portfolio",
+    "short_name": "Portfolio",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Salim portfolio.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "web/icons/Logo S.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "web/icons/Logo S.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "web/icons/Logo S.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "web/icons/Logo S.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
