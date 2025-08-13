@@ -64530,7 +64530,7 @@ n===$&&A.b()
 p.push(A.cj(a0,new A.dm(new A.aA(o,30,o,30),A.f2(A.a([A.cZ(n,new A.a9o(a),a0),new A.HJ(a0),a.qM("Home",a.e),new A.aY(15,a0,a0,a0),a.qM("About",a.f),new A.aY(15,a0,a0,a0),a.qM(a1,a.r),new A.aY(15,a0,a0,a0),a.qM("Contact",a.w)],q),B.E,B.B,B.G),a0),B.q,a0,a0,a0,a0,a0,a0,a0,a0,a0,1/0))}if(a6)p.push(A.cj(a0,A.di(A.a([A.f2(A.a([A.os(B.hC,a2),A.os(B.hB,a3),A.os(B.hA,a4),A.os(B.hD,"https://x.com/zaalim388")],q),B.E,B.i0,B.G)],q),B.E,B.B,B.G),B.q,a0,a0,a0,a0,a0,a0,new A.aA(0,40,0,40),a0,a0,1/0))
 o=a6?0:100
 n=a6?20:a8*0.1
-m=a6?200:280
+m=a6?200:240
 p.push(new A.dm(new A.aA(o,0,0,0),A.cj(a0,new A.EM(new A.a9p(a),a0),B.q,a0,a0,a0,a0,a.e,a0,new A.aA(n,m,n,m),a0,a0,1/0),a0))
 o=a6?1100:1200
 n=a.w
